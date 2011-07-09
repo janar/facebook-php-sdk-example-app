@@ -1,0 +1,14 @@
+This works with PHP SDK (v.3.0.0) at moment.
+
+Read blogpost about it @ http://eagerfish.eu/example-facebook-iframe-app-using-graph-api-through-php-sdk/
+
+Check it out @ http://apps.facebook.com/test-graph-api-app/
+
+SETUP NOTES:
+1. Download latest 'facebook.php' (php-sdk) from github and place it next to index.php. 
+url: https://github.com/facebook/php-sdk/blob/master/src/facebook.php
+
+2. Setup your app in facebook as iframe app
+
+3. Fill in config.php which variables should be pretty much self explanatory. Values can be found here after clicking on your app.
+
