@@ -19,7 +19,6 @@ $user = $facebook->getUser();
 //redirect to facebook page
 if(isset($_GET['code'])){
 	if($fb_auto_post && $user){
-		$which = (rand(1, count($pics)) - 1);
 		$msg = array(
 			'message' => 'I started using ' . $fb_app_url
 		);
