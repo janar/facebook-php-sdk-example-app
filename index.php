@@ -14,13 +14,22 @@ $friends = array();
 $sent = false;
 $userData = null;
 
+$user = $facebook->getUser();
+
 //redirect to facebook page
 if(isset($_GET['code'])){
+	if($fb_auto_post && $user){
+		$which = (rand(1, count($pics)) - 1);
+		$msg = array(
+			'message' => 'I started using ' . $fb_app_url
+		);
+		$facebook->api('/me/feed', 'POST', $msg);
+	}
+
 	header("Location: " . $fb_app_url);
 	exit;
 }
 
-$user = $facebook->getUser();
 if ($user) {
 	//get user data
 	try {
@@ -50,13 +59,18 @@ if ($user) {
 			//do something about it
 		}
 	}
-	
+
 } else {
 	$loginUrl = $facebook->getLoginUrl(array(
 		'canvas' => 1,
 		'fbconnect' => 0,
 		'scope' => 'publish_stream',
 	));
+
+	if($fb_auto_redirect){
+		header("Location: " . $loginUrl);
+		exit;
+	}
 }
 
 ?>
